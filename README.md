@@ -27,23 +27,29 @@ code for fine-tuning for question-answering can be found <a href = 'https://gith
 ## Questions 1 and 2:
 We picked the Gemma-2 2B model (`gemma-2-2b-it`) and calculated the parameters of the model by summing up the parameters of each layer of the model and compared against those reported in the technical paper for the model.
 We note a small difference of 295,000. This discrepancy is minimal and could be due to rounding errors or slight variations in how the model was initialized or structured in the implementation.
-This is a negligible difference, indicating that the loaded model closely follows the architecture described in the paper.
+This is a negligible difference, indicating that the loaded model closely follows the architecture described in the paper. 
+
+Parameter Calculation is shown <a href = 'https://github.com/EshwarDhande/nlp_a3/blob/master/sst.ipynb'>here.</a>
 
 ## **Question 3a, 4a, 5, 6, 7: Fine-tuning for Classification** 
 - Used `transformers.AutoModelForSequenceClassification` to load the pre-trained model for fine-tuning on SST-2 dataset.
   
 - The model loaded using the above method had classification_model_parameters parameters.
 
-- Link to the huggingface model: classification_model_link
+- Link to the huggingface model: [classification_model_link](https://huggingface.co/ishanarang/gemma2_finetune_sst2)
   
-- The following metrics were calculated after training for classification_train_epoch epochs:
+- The following metrics were calculated before training:
   
 | Metric      | Score                               |
 |-------------|-------------------------------------|
-| Accuracy    | classification_model_accuracy       |
-| Precision   | classification_model_precision      |
-| Recall      | classification_model_recall         |
-| F1          | classification_model_f1             |
+| Accuracy    | 0.551605504587156       |
+| Precision   | 0.5591374091843514      |
+| Recall      | 0.551605504587156         |
+| F1          | 0.5428627070782336             |
+  
+- The following metrics were calculated after training for 3 epochs:
+  
+<img src = 'https://github.com/EshwarDhande/nlp_a3/blob/master/ft_isha.png'>
 
 ## **Question 3b, 4b, 5, 6, 7: Fine-tuning for Question-Answering** 
 - Extended `torch.nn.Module` to create a class `ExtractiveQAModel`, adding a feed-forward layer to the base model.
@@ -65,10 +71,12 @@ This is a negligible difference, indicating that the loaded model closely follow
 | F1           | qa_model_f1             |
 
 
+
+
 ## ***Individual Contribution***
 
-**Manish, Eshwar, and Isha** - Curated five different samples and trained SentencePieceBPETokenizer, BertWordPieceTokenizer, ByteLevelBPETokenizer and went ahead with Sentence Piece because of the best results. Calculated fertility score for all the samples. Tokenized the dataset. 
+**Isha and Manish** - Understanding sst2 dataset. Optimizing to run in kaggle file by various methods. Finetuning gemma on sst2 by utilizing peft technique.
 
-**Mukul and Preyum** - Selected Llama model and reduced parameters. Trained reduces llama model with the trained tokenizer. Calculated training loss after every 100 steps and perplexity after every 0.1 epochs. 
+**Eshwar, Mukul and Preyum** - Understanding squad dataset. Optimizing fine tuning technique to run on colab. Fine-tuning gemma on squad/
 
 

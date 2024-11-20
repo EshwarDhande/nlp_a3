@@ -7,6 +7,7 @@ Placeholders:
 - classification_model_precision
 - classification_model_recall
 - classification_model_f1
+- classification_train_epoch
 - qa_model_parameters
 - qa_model_link
 - qa_model_exact_match
@@ -16,6 +17,7 @@ Placeholders:
 - qa_model_rouge_l
 - qa_model_meteor
 - qa_model_f1
+- qa_train_epoch
 ---
 # NLP_Assignment_3
 ---
@@ -34,7 +36,7 @@ This is a negligible difference, indicating that the loaded model closely follow
 
 - Link to the huggingface model: classification_model_link
   
-- The following metrics were calculated after training for train_epoch epochs:
+- The following metrics were calculated after training for classification_train_epoch epochs:
   
 | Metric      | Score                               |
 |-------------|-------------------------------------|
@@ -50,7 +52,7 @@ This is a negligible difference, indicating that the loaded model closely follow
 
 - Link to the huggingface model: qa_model_link
   
-- The following metrics were calculated after training for train_epoch epochs:
+- The following metrics were calculated after training for qa_train_epoch epochs:
   
 | Metric       | Score                   |
 |--------------|-------------------------|
